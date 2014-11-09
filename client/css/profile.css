@@ -44,6 +44,19 @@
 	background-color: #f5f5f5;
 	text-align: center;
 	line-height: 180px;
+	position: relative;
+}
+
+.profile-pic > .progress {
+	width: 150px;
+	margin: auto;
+	height: 10px;
+	border-radius: 0;
+	top: 50%;
+	position: absolute;
+	left: 50%;
+	margin-top: -5px;
+	margin-left: -75px;
 }
 
 .profile-pic>i {
@@ -93,4 +106,9 @@
 .other-info {
 	width: 100%;
 	padding-left: 250px;	
+}
+
+.changePicture {
+	position: absolute;
+	bottom: 5px;
 }

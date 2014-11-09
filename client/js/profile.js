@@ -24,6 +24,9 @@ Template.profile.helpers({
 	},
 	editing: function() {
 		return editing.get();
+	},
+	uploadingFile: function() {
+		return uploadingFile.get();
 	}
 });
 
@@ -157,4 +160,44 @@ Template.newEducation.events({
 			templ.find(".result").value = "";
 		}
 	}
-})
+});
+
+
+Files = new Meteor.Collection(null);
+
+var uploadingFile = new ReactiveVar();
+
+Template.profilePicture.created = function() {
+	uploadingFile.set(false);
+}
+
+Template.profilePicture.events({
+  	'click .changePicture': function(e, templ) {
+  		templ.find('input[type=file]').click();
+  	},
+  	'change input[type=file]': function (e, tmpl) {
+		var input = tmpl.find('input[type=file]');
+    	var files = input.files;
+    	var file;
+    	var mFile;
+
+    	if(files.length > 0) {
+     		mFile = new MeteorFile(files[0], {
+        		collection: Files
+      		});
+      		Files.remove({});
+      		uploadingFile.set(true);
+      		Files.insert(mFile, function(i) {
+        		return function (err, res) {
+          			mFile.upload(files[i], "uploadFile");
+        		}
+      		}(0));
+    	}
+  	}
+});
+
+Template.uploadProgress.helpers({
+  file: function () {
+    return Files.findOne();
+  }
+});

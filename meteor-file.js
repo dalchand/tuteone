@@ -244,7 +244,7 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   var fs = Npm.require('fs');
   var path = Npm.require('path');
-
+  
   function sanitize (fileName) {
     return fileName
       .replace(/\//g, '')
@@ -253,12 +253,18 @@ if (Meteor.isServer) {
 
   _.extend(MeteorFile.prototype, {
     save: function (dirPath, options) {
-      var filepath = path.join(dirPath, sanitize(this.name));
+      var name = sanitize(this.name);
+      var filepath = path.join(dirPath, name);
       var buffer = new Buffer(this.data);
       var mode = this.start == 0 ? 'w' : 'a';
       var fd = fs.openSync(filepath, mode);
       fs.writeSync(fd, buffer, 0, buffer.length, this.start);
       fs.closeSync(fd);
+      if(this.start + buffer.length == this.size) {
+        if(options.onComplete) {
+          options.onComplete(name);
+        }
+      }
     }
   });
 }
