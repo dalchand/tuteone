@@ -1,0 +1,55 @@
+<template name="home">
+	<div class="titlebar clearfix">
+		<div class="title">
+			Home<span class="fa fa-fw fa-angle-right"></span>
+		</div>
+		{{> userInfo}}
+	</div>
+	<div class="container-fluid content">
+		{{> fileUpload}}
+	</div>
+</template>
+
+<template name="fileUpload">
+  <form class="well">
+    <legend>
+      <h3>Upload Files</h3>
+    </legend>
+
+    <input type="file" multiple />
+
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Size</th>
+        <th style="width: 150px;">Upload Progress</th>
+        <th style="width: 300px;">Status</th>
+      </thead>
+
+      <tbody>
+        {{#each files}}
+          {{> fileUploadRow}}
+        {{else}}
+          <tr><td colspan="4"><h5>No files selected</h5></td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </form>
+</template>
+
+<template name="fileUploadRow">
+  <tr>
+    <td>{{name}}</td>
+    <td>{{size}}</td>
+    <td>
+      <div class="progress progress-striped {{uploadCompleteClass}}">
+        <div class="bar" style="width: {{uploadProgress}}%">
+          <span style="padding: 2px; float: left; color: #000;">
+            {{uploadProgress}}%
+          </span>
+        </div>
+      </div>
+    </td>
+    <td>{{status}}</td>
+  </tr>
+</template>

@@ -1,0 +1,20 @@
+<template name="userInfo">
+	<div class="user-info profile pull-right">
+		{{#with user}}
+		<div class="btn-group pull-right">
+		  <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+		    {{#if profile.picture}}
+        	<div class="userPicture" style="background-image: url('{{profile.picture}}');"></div>
+        	{{else}}
+        	<div class="userPicture defaultUserPic fa fa-fw fa-user"></div>
+        	{{/if}}
+		  </a>
+		  <ul class="dropdown-menu" role="menu">
+		    <li><a href="/profile"><i class="fa fa-fw fa-user"></i>&nbsp; My Profile</a></li>
+		    <li class="divider"></li>
+		    <li><a href="/logout"><i class="fa fa-fw fa-sign-out"></i>&nbsp; Logout</a></li>
+		  </ul>
+		</div>
+      	{{/with}}
+	</div>
+</template>

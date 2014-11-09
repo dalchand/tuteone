@@ -1,0 +1,41 @@
+<!-- register.html -->
+<template name="register">
+    <div class="register">
+	    <div class="form-box register-box">
+            <form class="form" role="form">
+                <legend>
+                    <h3>Register</h3>
+                </legend>
+                {{#if errorMessage}}
+                <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+                {{/if}}
+                <div class="form-group {{#if nameError}} has-error {{/if}}">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your name">
+                </div>
+                <div class="form-group {{#if userError}} has-error {{/if}}">
+                    <label for="email">Email ID</label>
+                    <input type="email" class="form-control" id="email" placeholder="Your email">
+                </div>
+                <div class="form-group {{#if passwordError}} has-error {{/if}}">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Choose password (Minimum six characters required)">
+                </div>
+                <div class="form-group">
+                	<div class="radio">
+  						<label>
+    						<input type="radio" name="role" id="role2" value="student" checked>I'm a Student
+  						</label>
+					</div>
+					<div class="radio">
+  						<label>
+    						<input type="radio" name="role" id="role1" value="tutor">I'm a Tutor
+  						</label>
+					</div>
+                </div>
+                <button type="submit" class="btn btn-primary sign-up">Register</button>
+                <div class="ft"> <a href="/">Already have an account? Sign in here.</a></div>
+            </form>   
+        </div>
+    </div> 
+</template>

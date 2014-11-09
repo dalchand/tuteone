@@ -1,0 +1,75 @@
+.form-box {
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+	padding: 30px;
+}
+
+.form .ft {
+	margin-top: 10px;
+}
+
+.sidebar-brand > a {
+	font-family: 'Rochester', cursive;
+	font-size: 22px;
+}
+
+.titlebar {
+	height: 45px;
+	border-width: 0 0 1px;
+	border-style: solid;
+	background-color: #5bc0de;
+	border-color: #46b8da;
+	padding: 5px 15px;
+	z-index: 1000;
+	position: fixed;
+	width: 100%;
+	padding-right: 95px;
+}
+
+.titlebar > .title {
+	color: #fff;
+	font-size: 18px;
+	margin: 5px 0;
+	display: inline-block;
+}
+
+.section {
+	padding-bottom: 15px;
+}
+
+.content {
+	padding-top: 60px; 
+}
+
+.content .title {
+	font-weight: normal;
+	font-size: 18px;
+	border-bottom: 1px solid #efefef;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	color: #777;  
+}
+
+.text-lg {
+	font-size: 14px; 
+}
+
+.text-xlg {
+	font-size: 16px;
+}
+
+.text-sm {
+	font-size: 10px;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-light {
+	color: #a0a0a0;
+}
+
+.table-fixed {
+	table-layout: fixed;
+}

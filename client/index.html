@@ -1,0 +1,68 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>tuteOne | An Online Plateform for Tutors and Students</title>
+
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Sidebar -->
+
+  <link href="css/sidebar.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/base.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>  
+</body>
+
+<template name="layout">
+  <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        tuteOne
+                    </a>
+                </li>
+                {{#if loggedIn}}
+                <li class="{{#if equals page 'home'}} active {{/if}}">
+                  <a href="/">
+                    <div class="fa fa-fw fa-home home icon"></div>
+                    <div class="">Home</div>
+                  </a>
+                </li>
+                {{else}}
+                <li class="{{#if equals page 'login'}} active {{/if}}">
+                  <a href="/">
+                    <div class="fa fa-fw fa-sign-in sign-in icon"></div>
+                    <div class="">Sign in</div>
+                  </a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          {{> yield}}
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+</template>

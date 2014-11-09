@@ -1,0 +1,148 @@
+<template name="profile">
+	<div class="titlebar clearfix">
+		<div class="title">
+			Profile<span class="fa fa-fw fa-angle-right"></span>
+		</div>
+		{{> userInfo}}
+	</div>
+	<div class="container-fluid content">
+		<div class="row">
+	        <div class="col-lg-12">
+	        	{{#with user}}
+	        	<div class="basic-info section clearfix">
+	        		<div class="profile-pic-wrap">
+						<div class="profile-pic">
+							{{#if profile.picture}}
+							<i style="background-image: url('{{profile.picture}}')"></i>
+							{{else}}
+							<i class="fa fa-user"></i>
+							{{/if}}	
+						</div>
+					</div>
+					<div class="contact-info">
+						<div class="profile-info">
+							{{#if equals editing 'name'}}
+							<input autofocus type="text" class="field name" value="{{profile.name}}">
+							{{else}}
+							<div class="field editable name">
+								<div class="text-xlg text-bold">{{profile.name}}</div>
+							</div>
+							{{/if}}
+							<div class="field">
+								<i class="fa fa-fw fa-envelope"></i>{{username}}
+							</div>
+							{{#if equals editing 'phone'}}
+							<input autofocus type="text" class="field phone" value="{{profile.phone}}" placeholder="Add a number">
+							{{else}}
+							<div class="field editable phone {{#if profile.phone}}{{else}}text-light{{/if}}">
+								<i class="fa fa-fw fa-phone"></i>{{#if profile.phone}}{{profile.phone}}{{else}}Add a number{{/if}}
+							</div>
+							{{/if}}
+							{{#if equals editing 'location'}}
+							<input autofocus type="text" class="field location" value="{{profile.location}}" placeholder="City, State">
+							{{else}}
+							<div class="field editable location {{#if profile.location}}{{else}}text-light{{/if}}">
+								<i class="fa fa-fw fa-home"></i>{{#if profile.location}}{{profile.location}}{{else}}Add your location{{/if}}
+							</div>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+				<div class="other-info">
+					<form class="form" role="form">
+		                <div class="form-group">
+		                    <legend for="aboutme">About me</legend>
+		                    {{#if equals editing 'aboutme'}}
+		                    <textarea autofocus rows="4" class="form-control aboutme" id="aboutme" placeholder="Write something about yourself">{{profile.about_me}}</textarea>
+		                    {{else}}
+		                    <p class="aboutme field editable {{#if profile.about_me}}{{else}}text-light{{/if}}">{{#if profile.about_me}}{{{text profile.about_me}}}{{else}}Write something about yourself{{/if}}</p>
+		                    {{/if}}
+		                </div>
+		                <div class="form-group">
+		                    <legend for="eduacations">Educations</legend>
+		                    {{#if equals editing 'educations'}}
+		                    <table class="educations table table-fixed table-striped">
+	                    		<col width="120px">
+	                    		<col width="auto">
+	                    		<col width="150px">
+	                    		<col width="80px">
+	                    		<col width="100px">
+	                    		<tbody>
+			                    	{{#each profile.educations}}
+			                    	<tr>
+			                    		<td><input type="text" class="form-control input-sm" value="{{year}}"></td>
+			                    		<td><input type="text" class="form-control input-sm" value="{{institute}}"></td>
+			                    		<td><input type="text" class="form-control input-sm" value="{{course}}"></td>
+			                    		<td><input type="text" class="form-control input-sm" value="{{result}}"></td>
+			                    		<td><button type="button" class="btn btn-sm btn-primary removeEducation"><span class="fa fa-fw fa-trash-o"></span>Remove</button></td>
+			                    	</tr>		
+			                    	{{/each}}
+			                    	<tr>
+			                    		{{> newEducation}}
+			                    	</tr>
+		                    	</tbody>
+		                    </table>
+		                    {{else}}
+		                    <div class="educations editable field {{#if profile.educations}}{{else}}text-light{{/if}}">
+		                    	{{#if profile.educations}}
+			                    <table class="educations table table-fixed table-striped">
+			                    	<col width="120px">
+		                    		<col width="auto">
+		                    		<col width="150px">
+		                    		<col width="80px">
+			                    	<thead>
+		                    			<tr>
+		                    				<th>Year</th>
+		                    				<th>Institute</th>
+		                    				<th>Course</th>
+		                    				<th>Result</th>
+		                    			</tr>
+		                    		</thead>
+		                    		<tbody>
+				                    	{{#each profile.educations}}
+				                    	<tr>
+				                    		<td>{{year}}</td>
+				                    		<td>{{institute}}</td>
+				                    		<td>{{course}}</td>
+				                    		<td>{{result}}</td>
+				                    	</tr>		
+				                    	{{/each}}
+				                    </tbody>
+				                </table>
+			                    {{else}}
+			                    Add your educational background
+			                    {{/if}}
+		                    </div>
+		                    {{/if}}
+	                    </div>
+		                <div class="form-group">
+		                    <legend for="interests">Interests</legend>
+		                    {{#if equals editing 'interests'}}
+		                    <textarea autofocus rows="4" class="form-control interests" id="interests" placeholder="What are your hobbies">{{profile.interests}}</textarea>
+		                    {{else}}
+		                    <p class="interests field editable {{#if profile.interests}}{{else}}text-light{{/if}}">{{#if profile.interests}}{{{text profile.interests}}}{{else}}What are your hobbies{{/if}}</p>
+		                    {{/if}}
+		                </div>
+		                <div class="form-group">
+		                    <legend for="lookingfor">Looking for</legend>
+		                    {{#if equals editing 'lookingfor'}}
+		                    <textarea autofocus rows="4" class="form-control lookingfor" id="lookingfor" placeholder="What you are looking for at tuteOne">{{profile.looking_for}}</textarea>
+		                    {{else}}
+		                    <p class="lookingfor field editable {{#if profile.looking_for}}{{else}}text-light{{/if}}">{{#if profile.looking_for}}{{{text profile.looking_for}}}{{else}}What you are looking for at tuteOne{{/if}}</p>
+		                    {{/if}}
+		                </div>
+		            </form>
+				</div>
+				{{/with}}
+			</div>	
+		</div>
+	</div>
+</template>
+
+<template name="newEducation">
+	<td><input type="text" class="form-control input-sm year" placeholder="Year"></td>
+	<td><input type="text" class="form-control input-sm institute" placeholder="Institute"></td>
+	<td><input type="text" class="form-control input-sm course" placeholder="Course"></td>
+	<td><input type="text" class="form-control input-sm result" placeholder="Result"></td>
+	<td><button type="button" class="btn btn-sm btn-primary addNewEducation"><span class="fa fa-fw fa-plus"></span>Add</button></td>
+</template>
