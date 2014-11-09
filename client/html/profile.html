@@ -162,9 +162,9 @@
 		<span class="fa fa-fw fa-camera"></span>
 		Change Picture
 	</button>
-	<input type="file" class="hide" accept="image/*" />
+	<input type="file" class="hide" />
 	{{#if profile.picture}}
-	<i style="background-image: url('{{profile.picture}}')"></i>
+	<i style="background-image: url('{{imageUrl profile.picture.source}}')"></i>
 	{{else}}
 	<i class="fa fa-user"></i>
 	{{/if}}	

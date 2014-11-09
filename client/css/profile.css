@@ -2,6 +2,7 @@
 	width: 40px !important;
 	height: 40px !important;
 	border-radius: 20px;
+	margin: 1px;
 }
 
 .profile {
@@ -63,6 +64,13 @@
 	font-size: 150px;
 	vertical-align: middle;
 	color: #ccc;
+	width: 180px;
+	height: 180px;
+	position: relative;
+	display: inline-block;
+	background-position: 25% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .basic-info {
@@ -111,4 +119,22 @@
 .changePicture {
 	position: absolute;
 	bottom: 5px;
+	z-index: 5;
+	margin: auto;
+	left: 50%;
+	margin-left: -58px;
+}
+
+.userPicture>i {
+	font-size: 30px;
+	vertical-align: middle;
+	color: #efefef;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	position: relative;
+	display: block;
+	background-position: 25% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
 }

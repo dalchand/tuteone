@@ -7,7 +7,7 @@ TuteOne.validateEmail = function(email) {
     return re.test(email);
 } 
 
-
+var resourceUrl = "http://192.168.0.103:8080/eps/files";
 
 UI.registerHelper("loggedIn", function(){
 	return Meteor.userId();
@@ -27,4 +27,8 @@ UI.registerHelper("user", function(){
 
 UI.registerHelper("text", function(t){
 	return t.replace(/\r?\n/g, '<br />');
+})
+
+UI.registerHelper("imageUrl", function(src){
+	return resourceUrl + src;
 })

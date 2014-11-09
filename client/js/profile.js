@@ -189,15 +189,20 @@ Template.profilePicture.events({
       		uploadingFile.set(true);
       		Files.insert(mFile, function(i) {
         		return function (err, res) {
-          			mFile.upload(files[i], "uploadFile");
+          			mFile.upload(files[i], "uploadFile", function(e, file){
+          				if(file) {
+          					console.log(file.uploadProgress);
+          					uploadingFile.set(false);
+          				}
+          			});
         		}
       		}(0));
-    	}
+      	}
   	}
 });
 
 Template.uploadProgress.helpers({
-  file: function () {
-    return Files.findOne();
-  }
+  	file: function () {
+    	return Files.findOne();
+  	}
 });
